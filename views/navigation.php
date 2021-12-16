@@ -6,6 +6,10 @@
             <a class="nav-link" href="/index.php">Home</a>
         </li>
 
+        <li>
+            <a href="/lists.php">Lists</a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="/views/about.php">About</a>
         </li>
@@ -14,7 +18,7 @@
             <?php if (isset($_SESSION['user'])) : ?>
                 <a class="nav-link" href="/app/users/logout.php">Logout</a>
             <?php else : ?>
-                <a class="nav-link" href="/views/login.php">Login</a>
+                <a class="nav-link" href="/login.php">Login</a>
             <?php endif; ?>
         </li>
     </ul>
