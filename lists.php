@@ -1,15 +1,20 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 <?php
+$statment = $database->query('SELECT * FROM posts');
 
+$posts = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($posts as $post) {
+    echo $post['title'] . $post['content'] . '<br>';
+}
+
+$_POST['title'] = NULL;
+$_POST['content'] = NULL;
 
 if (isset($_POST['title'], $_POST['content'])) {
-    echo $_POST['title'] . "<br>" . $_POST['content'];
     $author_id = 6;
 
-    $statment = $database->query('SELECT * FROM posts');
-
-    $posts = $statment->fetch(PDO::FETCH_ASSOC);
 
     $query =
         'INSERT INTO posts (title, content, author_id)
@@ -23,9 +28,8 @@ if (isset($_POST['title'], $_POST['content'])) {
 
     $insert->execute();
 
-    foreach ($posts as $post) {
-        echo $post;
-    }
+
+    //Resetting _POST
 }
 ?>
 
