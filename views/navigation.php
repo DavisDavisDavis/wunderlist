@@ -14,6 +14,10 @@
             <a class="nav-link" href="/views/about.php">About</a>
         </li>
 
+        <li>
+            <a href="/profile.php">Profile</a>
+        </li>
+
         <li class="nav-item">
             <?php if (isset($_SESSION['user'])) : ?>
                 <a class="nav-link" href="/app/users/logout.php">Logout</a>
