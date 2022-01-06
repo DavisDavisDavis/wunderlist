@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 <?php
-$statment = $database->query('SELECT * FROM posts');
+$statment = $database->query('SELECT * FROM lists');
 
 $posts = $statment->fetchAll(PDO::FETCH_ASSOC);
 
@@ -46,6 +46,17 @@ if (isset($_POST['title'], $_POST['content'])) {
             <label for="content">content</label>
             <input class="" type="content" name="content" id="content" required>
         </div>
+
+        <div>
+            <label for="checkbox">completed</label>
+            <input type="checkbox">
+        </div>
+
+        <div>
+            <label for="checkbox">deadline</label>
+            <input type="date">
+        </div>
+
 
         <button type="submit" class="btn btn-primary">submit</button>
     </form>
