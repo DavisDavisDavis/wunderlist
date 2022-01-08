@@ -12,9 +12,11 @@ if (isset($_POST['email'], $_POST['password'])) {
     $user = $statment->fetch(PDO::FETCH_ASSOC);
 
 
-    if ($user['email'] === $_POST['email'] && password_verify($_POST['password'], $user['password'] )) {
+    if ($user['email'] === $_POST['email'] && password_verify($_POST['password'], $user['password'])) {
         echo "user name correct 💖";
         $_SESSION['user'] = $user;
+        $_SESSION['email'] = $_POST['email'];
+        die(var_dump($_SESSION['email']));
     }
 
     redirect('/');

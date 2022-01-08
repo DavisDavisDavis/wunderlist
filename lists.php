@@ -18,7 +18,8 @@ foreach ($posts as $post) {
 if (isset($_POST['title'], $_POST['content'])) {
     echo "it went through 💖";
 
-
+    $_POST['lists_id'] = 3;
+    die(var_dump($_SESSION));
 
     $query =
         'INSERT INTO lists (lists_id, user_id, title, description, completed, deadline)
@@ -27,7 +28,7 @@ if (isset($_POST['title'], $_POST['content'])) {
     $insert = $database->prepare($query);
 
     $insert->bindParam(':lists_id', $_POST['lists_id'], PDO::PARAM_STR);
-    $insert->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+    $insert->bindParam(':user_id', $_SESSION['email'], PDO::PARAM_STR);
     $insert->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
     $insert->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
     $insert->bindParam(':completed', $_POST['completed'], PDO::PARAM_BOOL);
