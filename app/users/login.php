@@ -10,9 +10,6 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     $statment = $database->query('SELECT * FROM users');
     $user = $statment->fetch(PDO::FETCH_ASSOC);
-    die(var_dump($user['email']));
-    die(var_dump($user['password']));
-    die(var_dump($user));
 
     if ($user['email'] === $_POST['email'] && password_verify($_POST['password'], $user['password'])) {
         echo "user name correct 💖";
