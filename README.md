@@ -1,4 +1,4 @@
-[!img](https://c.tenor.com/uzfXCkkJev0AAAAd/%E5%B7%A5%E4%BA%8B%E7%8F%BE%E5%A0%B4-wasu.gif)
+![img](https://c.tenor.com/uzfXCkkJev0AAAAd/%E5%B7%A5%E4%BA%8B%E7%8F%BE%E5%A0%B4-wasu.gif)
 
 # 🏗🏗🏗 WORK IN PROGRESS 🏗🏗🏗
 
