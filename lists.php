@@ -3,10 +3,10 @@
 <?php
 $statment = $database->query('SELECT * FROM lists');
 
-$posts = $statment->fetchAll(PDO::FETCH_ASSOC);
+$lists = $statment->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($posts as $post) {
-    echo $post['title'] . $post['content'] . '<br>';
+foreach ($lists as $list) {
+    echo $list['title'] . $list['description'] . '<br>';
 }
 
 // $_POST['title'] = NULL;
@@ -19,7 +19,6 @@ if (isset($_POST['title'], $_POST['content'])) {
     echo "it went through 💖";
 
     $_POST['lists_id'] = 3;
-    die(var_dump($_SESSION));
 
     $query =
         'INSERT INTO lists (lists_id, user_id, title, description, completed, deadline)
