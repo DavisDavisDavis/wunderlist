@@ -5,10 +5,6 @@ $statment = $database->query('SELECT * FROM lists');
 
 $lists = $statment->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($lists as $list) {
-    echo $list['title'] . $list['description'] . '<br>';
-}
-
 // $_POST['title'] = NULL;
 // $_POST['content'] = NULL;
 // $_POST['completed'] = NULL;
@@ -18,7 +14,9 @@ foreach ($lists as $list) {
 if (isset($_POST['title'], $_POST['content'])) {
     echo "it went through 💖";
 
+
     $_POST['lists_id'] = 3;
+
 
     $query =
         'INSERT INTO lists (lists_id, user_id, title, description, completed, deadline)
@@ -30,8 +28,15 @@ if (isset($_POST['title'], $_POST['content'])) {
     $insert->bindParam(':user_id', $_SESSION['email'], PDO::PARAM_STR);
     $insert->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
     $insert->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
-    $insert->bindParam(':completed', $_POST['completed'], PDO::PARAM_BOOL);
     $insert->bindParam(':deadline', $_POST['deadline'], PDO::PARAM_STR);
+
+    $insert->bindParam(':completed', $_POST['complete'], PDO::PARAM_BOOL);
+
+    // if ($_POST['completed']) {
+    //     $insert->bindParam(':completed', true, PDO::PARAM_BOOL);
+    // } else {
+    //     $insert->bindParam(':completed', false, PDO::PARAM_BOOL);
+    // }
 
     // $insert->bindParam(':author_id', $author_id, PDO::PARAM_INT);
 
@@ -44,6 +49,15 @@ if (isset($_POST['title'], $_POST['content'])) {
 
 <main>
     <h1>Task list</h1>
+
+
+    <?php foreach ($lists as $list) : ?>
+        <div>
+            <?= $list['title'] . $list['description'] . '<br>'; ?>
+            <input type="checkbox" name="completed">
+            <label for="checkbox">completed</label>
+        </div>
+    <?php endforeach; ?>
 
     <form action="" method="post">
         <div class="mb-3">

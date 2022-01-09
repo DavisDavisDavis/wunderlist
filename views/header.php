@@ -7,6 +7,7 @@
 
     <title><?php echo $config['title']; ?></title>
     <link rel="stylesheet" href="/assets/styles/app.css">
+    <link rel="stylesheet" href="/assets/styles/lists.css">
 </head>
 
 <body>
