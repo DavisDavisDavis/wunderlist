@@ -5,11 +5,10 @@ $statment = $database->query('SELECT * FROM lists');
 
 $lists = $statment->fetchAll(PDO::FETCH_ASSOC);
 
-// $_POST['title'] = NULL;
-// $_POST['content'] = NULL;
-// $_POST['completed'] = NULL;
-// $_POST['deadline'] = NULL;
-
+$_POST['title'] = NULL;
+$_POST['description'] = NULL;
+$_POST['completed'] = NULL;
+$_POST['deadline'] = NULL;
 
 if (isset($_POST['title'], $_POST['content'])) {
     echo "it went through 💖";
@@ -42,9 +41,9 @@ if (isset($_POST['title'], $_POST['content'])) {
 
     $insert->execute();
 
-
     //Resetting _POST
 }
+
 ?>
 
 <main>
@@ -53,7 +52,7 @@ if (isset($_POST['title'], $_POST['content'])) {
 
     <?php foreach ($lists as $list) : ?>
         <div>
-            <?= $list['title'] . $list['description'] . '<br>'; ?>
+            <?= $list['title'] . " " . $list['description'] . '<br>'; ?>
             <input type="checkbox" name="completed">
             <label for="checkbox">completed</label>
         </div>
@@ -68,11 +67,6 @@ if (isset($_POST['title'], $_POST['content'])) {
         <div class="mb-3">
             <label for="content">content</label>
             <input class="" type="content" name="content" id="content" required>
-        </div>
-
-        <div>
-            <label for="checkbox">completed</label>
-            <input type="checkbox" name="completed">
         </div>
 
         <div>
