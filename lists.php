@@ -1,9 +1,9 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 <?php
-$statment = $database->query('SELECT * FROM lists');
+$statment_lists = $database->query('SELECT * FROM lists');
 
-$lists = $statment->fetchAll(PDO::FETCH_ASSOC);
+$lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
 
 $_POST['title'] = NULL;
 $_POST['description'] = NULL;
@@ -19,7 +19,7 @@ if (isset($_POST['title'], $_POST['content'])) {
 
     $query =
         'INSERT INTO lists (lists_id, user_id, title, description, completed, deadline)
-        VALUES (:lists_id, :user_id, :title, :content, :completed, :deadline)';
+        VALUES (:lists_id, :user_id, :title, :content, :completed, :deadline);';
 
     $insert = $database->prepare($query);
 
@@ -44,11 +44,40 @@ if (isset($_POST['title'], $_POST['content'])) {
     //Resetting _POST
 }
 
+
+
+
+
+if (isset($_POST['page_name'])) {
+    echo "it went through 💖";
+
+    $query_page = 'INSERT INTO pages(user_id, lists_id, page_title)
+    VALUES (:user_id, :lists_id, :page_title);';
+
+    $insert_pages = $database->prepare($query_page);
+
+    $insert_pages->bindParam(':user_id', $_SESSION['email'], PDO::PARAM_STR);
+    $insert_pages->bindParam(':lists_id', $_POST['lists_id'], PDO::PARAM_INT);
+    $insert_pages->bindParam(':page_title', $_POST['page_name'], PDO::PARAM_STR);
+
+    $insert_pages->execute();
+}
+
 ?>
 
 <main>
     <h1>Task list</h1>
 
+    <form action="" method="POST">
+        <h2>Create a page</h2>
+
+        <div class="mb-3">
+            <label for="title">title</label>
+            <input class="" type="" name="page_name" id="page_name" placeholder="title page" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">submit</button>
+    </form>
 
     <?php foreach ($lists as $list) : ?>
         <div>
