@@ -44,20 +44,15 @@ if (isset($_POST['title'], $_POST['content'])) {
     //Resetting _POST
 }
 
-
-
-
-
 if (isset($_POST['page_name'])) {
     echo "it went through 💖";
 
-    $query_page = 'INSERT INTO pages(user_id, lists_id, page_title)
-    VALUES (:user_id, :lists_id, :page_title);';
+    $query_page = 'INSERT INTO pages(user_id, page_title)
+    VALUES (:user_id, :page_title);';
 
     $insert_pages = $database->prepare($query_page);
 
     $insert_pages->bindParam(':user_id', $_SESSION['email'], PDO::PARAM_STR);
-    $insert_pages->bindParam(':lists_id', $_POST['lists_id'], PDO::PARAM_INT);
     $insert_pages->bindParam(':page_title', $_POST['page_name'], PDO::PARAM_STR);
 
     $insert_pages->execute();
