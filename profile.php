@@ -4,14 +4,8 @@
 <article>
     <h1>Profile</h1>
 
-    <?php if (isset($_SESSION['email'])) : ?>
-        <h2><?= $_SESSION['name'] ?></h2>
-        <h2><?= $_SESSION['email'] ?></h2>
-        <h2><?= $_SESSION['email'] ?></h2>
-        <a href="/edit.php">Edit profile</a>
-    <?php endif; ?>
-
     <form action="/app/posts/upload_img.php" method="post" enctype="multipart/form-data">
+        <img src="<?= '/app/posts/img/' . $_SESSION['email'] . '.png'; ?>" alt="">
         <div>
             <label for="profile">Upload a profile picture</label>
             <input type="file" name="profile" id="profile" required>
@@ -21,6 +15,9 @@
     </form>
 
     <form action="app/posts/update.php" method="post">
+
+        <h2><?= $_SESSION['name'] ?></h2>
+        <h2><?= $_SESSION['email'] ?></h2>
 
         <div class="mb-3">
             <label for="email">Name</label>
