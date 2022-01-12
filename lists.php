@@ -4,7 +4,6 @@
 <?php
 
 $statment_lists = $database->query('SELECT * FROM lists');
-
 $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -49,6 +48,11 @@ $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
 
 
         <button type="submit" class="btn btn-primary">submit</button>
+    </form>
+
+    <form action="/app/posts/delete.php" method="POST">
+        <input type="number" name="delete_task">
+        <button type="submit">Delete</button>
     </form>
 
     <script src="list.js"></script>
