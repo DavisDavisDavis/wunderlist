@@ -2,3 +2,14 @@ main div {
   width: 50%;
   display: flex;
 }
+
+form {
+  background: pink;
+
+  padding: 1rem;
+  margin: 2rem;
+}
+
+form div {
+  margin: 1rem;
+}

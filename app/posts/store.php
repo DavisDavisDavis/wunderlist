@@ -6,12 +6,6 @@ require __DIR__ . '/../autoload.php';
 
 // In this file we store/insert new posts in the database.
 
-
-$_POST['title'] = NULL;
-$_POST['description'] = NULL;
-$_POST['completed'] = NULL;
-$_POST['deadline'] = NULL;
-
 if (isset($_POST['title'], $_POST['content'])) {
     echo "it went through 💖";
 

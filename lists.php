@@ -9,27 +9,10 @@ $statment_pages = $database->query('SELECT * FROM pages');
 $pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-<?php foreach ($pages as $page) : ?>
-    <h2><?php
-        echo $page['id'];
-        echo $page['page_title']; ?>
-    </h2>
-<?php endforeach; ?>
 
 
 <main>
     <h1>Task list</h1>
-
-    <form action="/app/posts/store.php" method="POST">
-        <h2>Create a page</h2>
-
-        <div class="mb-3">
-            <label for="title">title</label>
-            <input class="" type="" name="page_name" id="page_name" placeholder="title page" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">submit</button>
-    </form>
 
     <?php foreach ($pages as $page) : ?>
         <h2><?= $page['page_title'] ?></h2>
@@ -47,7 +30,22 @@ $pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     <?php endforeach; ?>
 
+    <form action="/app/posts/store.php" method="POST">
+        <h2>Create a page 📀</h2>
+
+        <div class="mb-3">
+            <label for="title">title</label>
+            <input class="" type="" name="page_name" id="page_name" placeholder="title page" required>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+    </form>
+
     <form action="/app/posts/store.php" method="post">
+        <h2>Create task 💖</h2>
+
         <div class="mb-3">
             <label for="title">title</label>
             <input class="" type="title" name="title" id="title" placeholder="title" required>
@@ -63,19 +61,24 @@ $pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
             <input type="date" name="deadline">
         </div>
 
-        <label for="pages">Select page</label>
-        <select class="" name="select_page">
-            <option disabled selected value>Add</option>
-            <?php foreach ($pages as $page) : ?>
-                <option value="<?= $page['id']; ?>"><?= $page['page_title']; ?></option>
-            <?php endforeach; ?>
-        </select>
+        <div>
+            <label for="pages">Select page</label>
+            <select class="" name="select_page">
+                <option disabled selected value>Add</option>
+                <?php foreach ($pages as $page) : ?>
+                    <option value="<?= $page['id']; ?>"><?= $page['page_title']; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
 
-
-        <button type="submit" class="btn btn-primary">submit</button>
+        <div>
+            <button type="submit" class="btn btn-primary">submit</button>
+        </div>
     </form>
 
     <form action="/app/posts/update.php" method="POST">
+        <h2>Update 🐱</h2>
+
         <div class="mb-3">
             <label for="title">edit</label>
             <input class="" type="title" name="title" id="title" placeholder="title">
@@ -91,16 +94,24 @@ $pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
             <input type="date" name="deadline">
         </div>
 
-        <input type="checkbox" name="completed">
-        <label for="checkbox">completed</label>
+        <div>
+            <input type="checkbox" name="completed">
+            <label for="checkbox">completed</label>
+        </div>
 
-        <input type="number" name="task_id">
-        <button type="submit">Edit</button>
+        <div>
+            <input type="number" name="task_id">
+            <button type="submit">Edit</button>
+        </div>
     </form>
 
     <form action="/app/posts/delete.php" method="POST">
-        <input type="number" name="delete_task">
-        <button type="submit">Delete</button>
+        <h2>Delete task 🔥</h2>
+
+        <div>
+            <input type="number" name="delete_task">
+            <button type="submit">Delete</button>
+        </div>
     </form>
 
     <script src="list.js"></script>
