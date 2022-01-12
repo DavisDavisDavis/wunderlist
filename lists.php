@@ -5,8 +5,17 @@
 
 $statment_lists = $database->query('SELECT * FROM lists');
 $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
+$statment_pages = $database->query('SELECT * FROM pages');
+$pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
+<?php foreach ($pages as $page) : ?>
+    <h2><?php
+        echo $page['id'];
+        echo $page['page_title']; ?>
+    </h2>
+<?php endforeach; ?>
+
 
 <main>
     <h1>Task list</h1>
@@ -22,15 +31,20 @@ $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
         <button type="submit" class="btn btn-primary">submit</button>
     </form>
 
-    <?php foreach ($lists as $list) : ?>
-        <div>
-            <?=
-            $list['title'] . " " . $list['description'];
-            if ($list['completed'] == 'yes') {
-                echo "💖 completed" . '<br>';
-            }
-            ?>
-        </div>
+    <?php foreach ($pages as $page) : ?>
+        <h2><?= $page['page_title'] ?></h2>
+        <?php foreach ($lists as $list) : ?>
+            <div>
+                <?php
+                if ($list['lists_id'] == $page['id']) {
+                    echo $list['title'] . " " . $list['description'];
+                    if ($list['completed'] == 'yes') {
+                        echo "💖 completed" . '<br>';
+                    }
+                }
+                ?>
+            </div>
+        <?php endforeach; ?>
     <?php endforeach; ?>
 
     <form action="/app/posts/store.php" method="post">
@@ -48,6 +62,14 @@ $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
             <label for="checkbox">deadline</label>
             <input type="date" name="deadline">
         </div>
+
+        <label for="pages">Select page</label>
+        <select class="" name="select_page">
+            <option disabled selected value>Add</option>
+            <?php foreach ($pages as $page) : ?>
+                <option value="<?= $page['id']; ?>"><?= $page['page_title']; ?></option>
+            <?php endforeach; ?>
+        </select>
 
 
         <button type="submit" class="btn btn-primary">submit</button>

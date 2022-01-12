@@ -16,22 +16,18 @@ if (isset($_POST['title'], $_POST['content'])) {
     echo "it went through 💖";
 
 
-    $_POST['lists_id'] = 3;
-
-
     $query =
         'INSERT INTO lists (lists_id, user_id, title, description, completed, deadline)
         VALUES (:lists_id, :user_id, :title, :content, :completed, :deadline);';
 
     $insert = $database->prepare($query);
 
-    $insert->bindParam(':lists_id', $_POST['lists_id'], PDO::PARAM_STR);
+    $insert->bindParam(':lists_id', $_POST['select_page'], PDO::PARAM_STR);
     $insert->bindParam(':user_id', $_SESSION['email'], PDO::PARAM_STR);
     $insert->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
     $insert->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
     $insert->bindParam(':deadline', $_POST['deadline'], PDO::PARAM_STR);
 
-    $insert->bindParam(':completed', $_POST['complete'], PDO::PARAM_BOOL);
 
     // if ($_POST['completed']) {
     //     $insert->bindParam(':completed', true, PDO::PARAM_BOOL);

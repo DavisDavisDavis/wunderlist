@@ -10,16 +10,20 @@
             <a href="/lists.php">Lists</a>
         </li>
 
-        <li>
-            <a href="/profile.php">Profile</a>
-        </li>
 
-        <li class="nav-item">
-            <?php if (isset($_SESSION['email'])) : ?>
+
+        <?php if (isset($_SESSION['email'])) : ?>
+            <li>
                 <a class="nav-link" href="/app/users/logout.php">Logout</a>
-            <?php else : ?>
+            </li>
+
+            <li>
+                <a href="/profile.php">Profile</a>
+            </li>
+        <?php else : ?>
+            <li>
                 <a class="nav-link" href="/login.php">Login</a>
-            <?php endif; ?>
-        </li>
+            </li>
+        <?php endif; ?>
     </ul>
 </nav>
