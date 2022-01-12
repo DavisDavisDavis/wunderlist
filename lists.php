@@ -24,9 +24,12 @@ $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
 
     <?php foreach ($lists as $list) : ?>
         <div>
-            <?= $list['title'] . " " . $list['description'] . '<br>'; ?>
-            <input type="checkbox" name="completed">
-            <label for="checkbox">completed</label>
+            <?=
+            $list['title'] . " " . $list['description'];
+            if ($list['completed'] == 'yes') {
+                echo "💖 completed" . '<br>';
+            }
+            ?>
         </div>
     <?php endforeach; ?>
 
@@ -53,8 +56,21 @@ $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
     <form action="/app/posts/update.php" method="POST">
         <div class="mb-3">
             <label for="title">edit</label>
-            <input class="" type="title" name="title" id="title" placeholder="edit" required>
+            <input class="" type="title" name="title" id="title" placeholder="title" required>
         </div>
+
+        <div class="mb-3">
+            <label for="content">content</label>
+            <input class="" type="content" name="content" id="content" required>
+        </div>
+
+        <div>
+            <label for="checkbox">deadline</label>
+            <input type="date" name="deadline">
+        </div>
+
+        <input type="checkbox" name="completed">
+        <label for="checkbox">completed</label>
 
         <input type="number" name="task_id">
         <button type="submit">Edit</button>
