@@ -50,6 +50,16 @@ $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
         <button type="submit" class="btn btn-primary">submit</button>
     </form>
 
+    <form action="/app/posts/update.php" method="POST">
+        <div class="mb-3">
+            <label for="title">edit</label>
+            <input class="" type="title" name="title" id="title" placeholder="edit" required>
+        </div>
+
+        <input type="number" name="task_id">
+        <button type="submit">Edit</button>
+    </form>
+
     <form action="/app/posts/delete.php" method="POST">
         <input type="number" name="delete_task">
         <button type="submit">Delete</button>
