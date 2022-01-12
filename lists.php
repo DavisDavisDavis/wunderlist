@@ -13,22 +13,42 @@ $pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
 
 <main>
     <h1>Task list</h1>
+    <?= date_today(); ?>
+
+    <form action="" method="POST">
+        <label for="select">Display:</label>
+        <select name="select_display" id="">
+            <option value="none">All</option>
+            <option value="today">Today</option>
+        </select>
+
+        <button type="submit">Select</button>
+    </form>
 
     <?php foreach ($pages as $page) : ?>
         <h2><?= $page['page_title'] ?></h2>
         <?php foreach ($lists as $list) : ?>
             <div>
-                <?php
-                if ($list['lists_id'] == $page['id']) {
-                    echo $list['title'] . " " . $list['description'];
-                    if ($list['completed'] == 'yes') {
-                        echo "💖 completed" . '<br>';
-                    }
-                }
-                ?>
+                <?php if ($list['lists_id'] == $page['id']) : ?>
+
+                    <?php if (isset($_POST['select_display'])) : ?>
+                        <?php if ($_POST['select_display'] == 'today') : ?>
+                            <?php if ($list['deadline'] == date_today()) : ?>
+                                <?= $list['title'] . ': ' . $list['description'] ?>
+                                <?= task_completed($list) ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php if ($_POST['select_display'] == 'none') : ?>
+                            <?= $list['title'] . ': ' . $list['description'] ?>
+                            <?= task_completed($list) ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
             </div>
         <?php endforeach; ?>
     <?php endforeach; ?>
+
+
 
     <form action="/app/posts/store.php" method="POST">
         <h2>Create a page 📀</h2>
@@ -64,10 +84,11 @@ $pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
         <div>
             <label for="pages">Select page</label>
             <select class="" name="select_page">
-                <option disabled selected value>Add</option>
-                <?php foreach ($pages as $page) : ?>
-                    <option value="<?= $page['id']; ?>"><?= $page['page_title']; ?></option>
-                <?php endforeach; ?>
+                <optgroup label="Pages">
+                    <?php foreach ($pages as $page) : ?>
+                        <option value="<?= $page['id']; ?>"><?= $page['page_title']; ?></option>
+                    <?php endforeach; ?>
+                </optgroup>
             </select>
         </div>
 
