@@ -56,12 +56,12 @@ $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
     <form action="/app/posts/update.php" method="POST">
         <div class="mb-3">
             <label for="title">edit</label>
-            <input class="" type="title" name="title" id="title" placeholder="title" required>
+            <input class="" type="title" name="title" id="title" placeholder="title">
         </div>
 
         <div class="mb-3">
             <label for="content">content</label>
-            <input class="" type="content" name="content" id="content" required>
+            <input class="" type="content" name="content" id="content">
         </div>
 
         <div>

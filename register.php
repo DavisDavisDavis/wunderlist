@@ -2,9 +2,16 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article>
-    <h1>Login</h1>
+    <h1>Sign up</h1>
 
-    <form action="app/users/login.php" method="post">
+    <form action="app/users/register.php" method="post">
+
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input class="form-control" type="name" name="name" id="name" placeholder="name" required>
+            <small class="form-text">Please provie your name</small>
+        </div>
+
         <div class="mb-3">
             <label for="email">Email</label>
             <input class="form-control" type="email" name="email" id="email" placeholder="uwu@gmail.com" required>
@@ -18,10 +25,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Login</button>
-
-        <a href="/register.php">
-            <h2>Click here to sign up</h2>
-        </a>
     </form>
 </article>
 

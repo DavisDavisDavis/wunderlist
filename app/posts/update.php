@@ -18,6 +18,7 @@ if (isset($_POST['task_id'])) {
         AND user_id = :user_id';
 
     $completed = 'yes';
+    $not_completed = null;
 
     $statement = $database->prepare($query);
     if (isset($_POST['title'])) {
@@ -28,6 +29,8 @@ if (isset($_POST['task_id'])) {
     }
     if (isset($_POST['completed'])) {
         $statement->bindParam(':completed', $completed, PDO::PARAM_STR);
+    } else {
+        $statement->bindParam(':completed', $not_completed, PDO::PARAM_STR);
     }
     if (isset($_POST['deadline'])) {
         $statement->bindParam(':deadline', $_POST['deadline'], PDO::PARAM_STR);
