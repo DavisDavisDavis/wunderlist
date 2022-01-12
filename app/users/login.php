@@ -13,6 +13,8 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     if ($user['email'] === $_POST['email'] && password_verify($_POST['password'], $user['password'])) {
         echo "user name correct 💖";
+
+        $_SESSION['name'] = $_POST['name'];
         $_SESSION['email'] = $_POST['email'];
     }
 

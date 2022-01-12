@@ -40,6 +40,25 @@ if (isset($_POST['task_id'])) {
     $statement->execute();
 }
 
+if (isset($_POST['email'], $_POST['name'])) {
+    $query = 'UPDATE users SET
+        name = :name,
+        email = :email,
+        password = :password
+    WHERE
+        email = :email_old';
+
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    $statement = $database->prepare($query);
+    $statement->bindParam(':name', $name, PDO::PARAM_STR);
+    $statement->bindParam(':email', $email, PDO::PARAM_STR);
+    $statement->bindParam(':password', $password, PDO::PARAM_STR);
+    $statement->bindParam(':email_old', $_SESSION['email'], PDO::PARAM_STR);
+    $statement->execute();
+}
 
 
 
