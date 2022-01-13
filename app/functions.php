@@ -36,7 +36,7 @@ function display_task($list, $select_display)
         echo $list['title'] . ' ' . $list['description'];
         echo task_completed($list);
     } elseif ($list['deadline'] == date_today()) {
-        echo $$list['title'] . ' ' . $list['description'];
+        echo $list['title'] . ' ' . $list['description'];
         echo task_completed($list);
     }
 }
