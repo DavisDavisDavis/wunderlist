@@ -18,6 +18,9 @@
   padding: 1rem;
   margin: 2rem;
 
+  border-radius: 0.5rem;
+  border: solid pink 2rem;
+
   display: block;
 }
 
@@ -27,4 +30,23 @@
 
 .lists form div {
   margin: 1rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile form {
+  background: pink;
+  width: 80%;
+  margin: 2rem;
+
+  border-radius: 0.5rem;
+  border: solid pink 2rem;
+}
+
+.profile .profile_picture {
+  width: 50%;
 }

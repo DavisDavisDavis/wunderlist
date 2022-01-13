@@ -1,15 +1,10 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
-
 <?php
-$statment_lists = $database->query('SELECT * FROM lists');
-$lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
-$statment_pages = $database->query('SELECT * FROM pages');
-$pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
-
+$lists = statement_fetchAll($database, 'lists');
+$pages = statement_fetchAll($database, 'pages');
 
 if (isset($_POST['select_display']) === false) {
-
     $_POST['select_display'] = 'none';
 }
 ?>

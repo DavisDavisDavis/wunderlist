@@ -8,6 +8,14 @@ function redirect(string $path)
     exit;
 }
 
+function statement_fetchAll($database, $item)
+{
+    $query = 'SELECT * FROM ' . $item;
+
+    $statment = $database->query($query);
+    return $statment->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function date_today(): string
 {
     $date_today = new DateTime('NOW');

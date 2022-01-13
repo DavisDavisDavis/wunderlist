@@ -1,11 +1,13 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-<article>
+<article class="profile">
     <h1>Profile</h1>
 
     <form action="/app/posts/upload_img.php" method="post" enctype="multipart/form-data">
-        <img src="<?= '/app/posts/img/' . $_SESSION['email'] . '.png'; ?>" alt="">
+        <h2>Change profile picture 📸</h2>
+
+        <img class="profile_picture" src="<?= '/app/posts/img/' . $_SESSION['email'] . '.png'; ?>" alt="">
         <div>
             <label for="profile">Upload a profile picture</label>
             <input type="file" name="profile" id="profile" required>
@@ -15,29 +17,27 @@
     </form>
 
     <form action="app/posts/update.php" method="post">
-
-        <h2><?= $_SESSION['name'] ?></h2>
-        <h2><?= $_SESSION['email'] ?></h2>
+        <h2>Change profile information 📝</h2>
 
         <div class="mb-3">
             <label for="email">Name</label>
-            <input class="form-control" type="name" name="name" id="name" placeholder="name" required>
-            <small class="form-text">Please provide the your email address.</small>
+            <input class="form-control" type="name" name="name" id="name" required>
+
         </div>
 
         <div class="mb-3">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" id="email" placeholder="uwu@gmail.com" required>
-            <small class="form-text">Please provide the your email address.</small>
+            <input class="form-control" type="email" name="email" id="email" required>
+
         </div>
 
         <div class="mb-3">
             <label for="password">Password</label>
             <input class="form-control" type="password" name="password" id="password" required>
-            <small class="form-text">Please provide the your password (passphrase).</small>
+
         </div>
 
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary">Change</button>
     </form>
 </article>
 
