@@ -11,8 +11,6 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     $email = trim($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    die(var_dump($_POST['password']));
-
     $query =
         'INSERT INTO users (name, email, password)
         VALUES (:name, :email, :password);';
