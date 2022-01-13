@@ -18,17 +18,17 @@ function date_today(): string
 function task_completed($list)
 {
     if ($list['completed'] == 'yes') {
-        return "💖 completed" . '<br>';
+        return " 💖 completed 💖" . '<br>';
     }
 }
 
 function display_task($list, $select_display)
 {
     if ($select_display == 'none') {
-        echo $list['title'] . ': ' . $list['description'];
+        echo $list['id'] . ': ' . $list['title'] . ': ' . $list['description'];
         echo task_completed($list);
     } elseif ($list['deadline'] == date_today()) {
-        echo $list['title'] . ': ' . $list['description'];
+        echo $list['id'] . ': ' . $list['title'] . ': ' . $list['description'];
         echo task_completed($list);
     }
 }

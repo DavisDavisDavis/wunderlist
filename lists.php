@@ -2,40 +2,22 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <?php
-
 $statment_lists = $database->query('SELECT * FROM lists');
 $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
 $statment_pages = $database->query('SELECT * FROM pages');
 $pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
+
+
+if (isset($_POST['select_display']) === false) {
+
+    $_POST['select_display'] = 'none';
+}
 ?>
 
 
-<main>
+<main class="lists">
     <h1>Task list</h1>
     <?= date_today(); ?>
-
-    <form action="" method="POST">
-        <label for="select">Display:</label>
-        <select name="select_display" id="">
-            <option value="none">All</option>
-            <option value="today">Today</option>
-        </select>
-
-        <button type="submit">Select</button>
-    </form>
-
-    <?php foreach ($pages as $page) : ?>
-        <h2><?= $page['page_title'] ?></h2>
-        <?php foreach ($lists as $list) : ?>
-            <div>
-                <?php if ($list['lists_id'] == $page['id']) : ?>
-                    <?= display_task($list, $_POST['select_display']); ?>
-                <?php endif; ?>
-            </div>
-        <?php endforeach; ?>
-    <?php endforeach; ?>
-
-
 
     <form action="/app/posts/store.php" method="POST">
         <h2>Create a page 📀</h2>
@@ -122,7 +104,28 @@ $pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </form>
 
-    <script src="list.js"></script>
+    <form action="" method="POST">
+        <label for="select">Display:</label>
+        <select name="select_display" id="">
+            <option value="none">All</option>
+            <option value="today">Today</option>
+        </select>
+
+        <button type="submit">Select</button>
+    </form>
+
+    <?php foreach ($pages as $page) : ?>
+        <h2><?= $page['page_title'] ?></h2>
+        <?php foreach ($lists as $list) : ?>
+            <div>
+                <?php if ($list['lists_id'] == $page['id']) : ?>
+                    <?= display_task($list, $_POST['select_display']); ?>
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+
+    <script src="/assets/scripts/list.js"></script>
 </main>
 
 <?php require __DIR__ . '/views/footer.php'; ?>
