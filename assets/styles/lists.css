@@ -50,3 +50,33 @@
 .profile .profile_picture {
   width: 50%;
 }
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login form {
+  background: pink;
+  width: 80%;
+  margin: 2rem;
+
+  border-radius: 0.5rem;
+  border: solid pink 2rem;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register form {
+  background: pink;
+  width: 80%;
+  margin: 2rem;
+
+  border-radius: 0.5rem;
+  border: solid pink 2rem;
+}
