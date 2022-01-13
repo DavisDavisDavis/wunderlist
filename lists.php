@@ -19,6 +19,21 @@ if (isset($_POST['select_display']) === false) {
     <h1>Task list</h1>
     <?= date_today(); ?>
 
+    <ul id="select_tool" class="select_tool">
+        <li>
+            Create Task ⭐️
+        </li>
+        <li>
+            Create Page 📀
+        </li>
+        <li>
+            Update Task ✨
+        </li>
+        <li>
+            Delete Task 🔥
+        </li>
+    </ul>
+
     <form action="/app/posts/store.php" method="POST">
         <h2>Create a page 📀</h2>
 
