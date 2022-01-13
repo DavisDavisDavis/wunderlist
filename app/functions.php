@@ -25,10 +25,10 @@ function task_completed($list)
 function display_task($list, $select_display)
 {
     if ($select_display == 'none') {
-        echo $list['id'] . ': ' . $list['title'] . ': ' . $list['description'];
+        echo $list['title'] . ' ' . $list['description'];
         echo task_completed($list);
     } elseif ($list['deadline'] == date_today()) {
-        echo $list['id'] . ': ' . $list['title'] . ': ' . $list['description'];
+        echo $$list['title'] . ' ' . $list['description'];
         echo task_completed($list);
     }
 }

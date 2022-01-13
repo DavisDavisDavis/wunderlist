@@ -17,6 +17,12 @@
 
   padding: 1rem;
   margin: 2rem;
+
+  display: block;
+}
+
+.lists .hide {
+  display: none;
 }
 
 .lists form div {

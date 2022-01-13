@@ -19,22 +19,14 @@ if (isset($_POST['select_display']) === false) {
     <h1>Task list</h1>
     <?= date_today(); ?>
 
-    <ul id="select_tool" class="select_tool">
-        <li>
-            Create Task ⭐️
-        </li>
-        <li>
-            Create Page 📀
-        </li>
-        <li>
-            Update Task ✨
-        </li>
-        <li>
-            Delete Task 🔥
-        </li>
+    <ul id="button_list" class="button_list">
+        <button class="tool_button_create">Create Task ⭐️</button>
+        <button class="tool_button_page">Create Page 📀</button>
+        <button class="tool_button_update">Update Task ✨</button>
+        <button class="tool_button_delete">Delete Task 🔥</button>
     </ul>
 
-    <form action="/app/posts/store.php" method="POST">
+    <form action="/app/posts/store.php" method="POST" class="tool_form_page">
         <h2>Create a page 📀</h2>
 
         <div class="mb-3">
@@ -47,7 +39,7 @@ if (isset($_POST['select_display']) === false) {
         </div>
     </form>
 
-    <form action="/app/posts/store.php" method="post">
+    <form action="/app/posts/store.php" method="post" class="tool_form_create">
         <h2>Create task 💖</h2>
 
         <div class="mb-3">
@@ -81,7 +73,7 @@ if (isset($_POST['select_display']) === false) {
         </div>
     </form>
 
-    <form action="/app/posts/update.php" method="POST">
+    <form action="/app/posts/update.php" method="POST" class="tool_form_update">
         <h2>Update 🐱</h2>
 
         <div class="mb-3">
@@ -105,22 +97,36 @@ if (isset($_POST['select_display']) === false) {
         </div>
 
         <div>
-            <input type="number" name="task_id">
+            <label for="pages">Select task</label>
+            <select class="" name="task_id">
+                <optgroup label="Tasks">
+                    <?php foreach ($lists as $list) : ?>
+                        <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
+                    <?php endforeach; ?>
+                </optgroup>
+            </select>
             <button type="submit">Edit</button>
         </div>
     </form>
 
-    <form action="/app/posts/delete.php" method="POST">
+    <form action="/app/posts/delete.php" method="POST" class="tool_form_delete">
         <h2>Delete task 🔥</h2>
 
         <div>
-            <input type="number" name="delete_task">
+            <label for="pages">Select task</label>
+            <select class="" name="delete_task">
+                <optgroup label="Tasks">
+                    <?php foreach ($lists as $list) : ?>
+                        <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
+                    <?php endforeach; ?>
+                </optgroup>
+            </select>
             <button type="submit">Delete</button>
         </div>
     </form>
 
     <form action="" method="POST">
-        <label for="select">Display:</label>
+        <label for="select">Display</label>
         <select name="select_display" id="">
             <option value="none">All</option>
             <option value="today">Today</option>
