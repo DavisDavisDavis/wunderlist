@@ -22,18 +22,13 @@ function task_completed($list)
     }
 }
 
-function display_task($list, $_POST, $select_display)
+function display_task($list, $select_display)
 {
-    if ($_POST['select_display'] == $select_display) {
-        # code...
+    if ($select_display == 'none') {
+        echo $list['title'] . ': ' . $list['description'];
+        echo task_completed($list);
+    } elseif ($list['deadline'] == date_today()) {
+        echo $list['title'] . ': ' . $list['description'];
+        echo task_completed($list);
     }
 }
-
-
-
-<?php if ($_POST['select_display'] == 'today') : ?>
-    <?php if ($list['deadline'] == date_today()) : ?>
-        <?= $list['title'] . ': ' . $list['description'] ?>
-        <?= task_completed($list) ?>
-    <?php endif; ?>
-<?php endif; ?>

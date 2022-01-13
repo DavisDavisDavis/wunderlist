@@ -7,7 +7,6 @@ $statment_lists = $database->query('SELECT * FROM lists');
 $lists = $statment_lists->fetchAll(PDO::FETCH_ASSOC);
 $statment_pages = $database->query('SELECT * FROM pages');
 $pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 
@@ -30,19 +29,7 @@ $pages = $statment_pages->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($lists as $list) : ?>
             <div>
                 <?php if ($list['lists_id'] == $page['id']) : ?>
-
-                    <?php if (isset($_POST['select_display'])) : ?>
-                        <?php if ($_POST['select_display'] == 'today') : ?>
-                            <?php if ($list['deadline'] == date_today()) : ?>
-                                <?= $list['title'] . ': ' . $list['description'] ?>
-                                <?= task_completed($list) ?>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                        <?php if ($_POST['select_display'] == 'none') : ?>
-                            <?= $list['title'] . ': ' . $list['description'] ?>
-                            <?= task_completed($list) ?>
-                        <?php endif; ?>
-                    <?php endif; ?>
+                    <?= display_task($list, $_POST['select_display']); ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
