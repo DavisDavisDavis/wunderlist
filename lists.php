@@ -57,7 +57,9 @@ if (isset($_POST['select_display']) === false) {
             <select class="" name="select_page">
                 <optgroup label="Pages">
                     <?php foreach ($pages as $page) : ?>
-                        <option value="<?= $page['id']; ?>"><?= $page['page_title']; ?></option>
+                        <?php if ($page['user_id'] == $_SESSION['email']) : ?>
+                            <option value="<?= $page['id']; ?>"><?= $page['page_title']; ?></option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </optgroup>
             </select>
@@ -96,7 +98,9 @@ if (isset($_POST['select_display']) === false) {
             <select class="" name="task_id">
                 <optgroup label="Tasks">
                     <?php foreach ($lists as $list) : ?>
-                        <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
+                        <?php if ($list['user_id'] == $_SESSION['email']) : ?>
+                            <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </optgroup>
             </select>
@@ -112,7 +116,9 @@ if (isset($_POST['select_display']) === false) {
             <select class="" name="delete_task">
                 <optgroup label="Tasks">
                     <?php foreach ($lists as $list) : ?>
-                        <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
+                        <?php if ($list['user_id'] == $_SESSION['email']) : ?>
+                            <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </optgroup>
             </select>
@@ -131,14 +137,16 @@ if (isset($_POST['select_display']) === false) {
     </form>
 
     <?php foreach ($pages as $page) : ?>
-        <h2><?= $page['page_title'] ?></h2>
-        <?php foreach ($lists as $list) : ?>
-            <div>
-                <?php if ($list['lists_id'] == $page['id']) : ?>
-                    <?= display_task($list, $_POST['select_display']); ?>
-                <?php endif; ?>
-            </div>
-        <?php endforeach; ?>
+        <?php if ($page['user_id'] == $_SESSION['email']) : ?>
+            <h2><?= $page['page_title'] ?></h2>
+            <?php foreach ($lists as $list) : ?>
+                <div>
+                    <?php if ($list['lists_id'] == $page['id']) : ?>
+                        <?= display_task($list, $_POST['select_display']); ?>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     <?php endforeach; ?>
 
     <script src="/assets/scripts/list.js"></script>

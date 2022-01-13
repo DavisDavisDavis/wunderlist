@@ -32,11 +32,13 @@ function task_completed($list)
 
 function display_task($list, $select_display)
 {
-    if ($select_display == 'none') {
-        echo $list['title'] . ' ' . $list['description'];
-        echo task_completed($list);
-    } elseif ($list['deadline'] == date_today()) {
-        echo $list['title'] . ' ' . $list['description'];
-        echo task_completed($list);
+    if ($list['user_id'] == $_SESSION['email']) {
+        if ($select_display == 'none') {
+            echo $list['title'] . ' ' . $list['description'];
+            echo task_completed($list);
+        } elseif ($list['deadline'] == date_today()) {
+            echo $list['title'] . ' ' . $list['description'];
+            echo task_completed($list);
+        }
     }
 }
