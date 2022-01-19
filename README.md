@@ -6,11 +6,13 @@ Text about the project and why it exists. This would also be a great place to li
 
 Make a task list and check of tasks that are done.
 
-# Installation
+# Installation 💖
 
-Download and use `PHP -S localhost:133` 💖
+Download and use:
 
-# Code Review
+```PHP -S localhost:133```
+
+# Code Review 📀
 
 Code review written by [Amanda Hulten](https://github.com/amandahulten).
 
@@ -28,7 +30,7 @@ Fatal error: Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violat
 9. `list.php: 6-9` - I would recommend you to write these statements in a function instead of at the top of the page, to get more DRY code.
 10. `example.js:10-15` - You shouldn't use echo in your php if-statements, it would be better to make a error/success function to call on.
 
-# Testers
+# Testers ⭐️
 
 Tested by the following people:
 
