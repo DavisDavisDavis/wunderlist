@@ -1,5 +1,4 @@
-![img](https://c.tenor.com/uzfXCkkJev0AAAAd/%E5%B7%A5%E4%BA%8B%E7%8F%BE%E5%A0%B4-wasu.gif)
-https://tenor.com/view/%E5%B7%A5%E4%BA%8B%E7%8F%BE%E5%A0%B4-wasu-%E3%83%96%E3%83%AB%E3%83%AB-%E5%B7%A5%E4%BA%8B%E4%B8%AD-%E3%82%A2%E3%83%BC%E3%83%88-gif-19336392
+![img](https://i.pinimg.com/originals/b6/aa/45/b6aa456d67464a2f6a1f19d3a3efbd2d.gif)
 
 # 🏗🏗🏗 WORK IN PROGRESS 🏗🏗🏗
 
