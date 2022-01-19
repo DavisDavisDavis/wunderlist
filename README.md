@@ -8,7 +8,7 @@ Make a task list and check of tasks that are done.
 
 # Installation
 
-Add the installation instructions.
+Download and use `PHP -S localhost:133` 💖
 
 # Code Review
 
