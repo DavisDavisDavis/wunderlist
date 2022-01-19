@@ -10,7 +10,9 @@ Make a task list and check of tasks that are done.
 
 Download and use:
 
-```PHP -S localhost:133```
+    ```php
+    PHP -S localhost:133
+    ```
 
 # Code Review 📀
 
