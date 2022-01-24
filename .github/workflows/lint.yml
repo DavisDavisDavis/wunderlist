@@ -1,6 +1,12 @@
 name: Lint
 
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore:
+      - 'app/src/**'
+  pull_request:
+    paths-ignore:
+      - 'app/src/**'
 
 jobs:
   run:
