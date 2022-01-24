@@ -4,11 +4,11 @@
 <article class="index">
     <!-- After deleting -->
     <?php if (isset($_SESSION['message'])) : ?>
-     <div class="alert alert-success" role="alert">
-     <?= $_SESSION['message'];
-     session_destroy();?>
-   </div>
-   <?php endif ?>
+    <div class="alert alert-success" role="alert">
+        <?= $_SESSION['message'];
+        session_destroy();?>
+    </div>
+    <?php endif ?>
     <!-- ----- -->
 
     <?php if (isset($_SESSION['email'])) : ?>

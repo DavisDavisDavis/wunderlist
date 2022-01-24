@@ -10,10 +10,10 @@ if (!isset($_SESSION['email'])) {
 <!-- Message if removing account fails -->
  <?php if (isset($_SESSION['message'])) : ?>
      <div class="alert alert-warning" role="alert">
-     <?= $_SESSION['message'];
-     unset($_SESSION['message']);?>
+        <?= $_SESSION['message'];
+        unset($_SESSION['message']);?>
    </div>
-   <?php endif ?>
+ <?php endif ?>
 
 <article class="profile">
     <h1>Profile</h1>
