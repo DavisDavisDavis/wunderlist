@@ -1,6 +1,14 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
+<h1><?php var_dump($_SESSION['email'])?></h1>
+ <?php if (isset($_SESSION['message'])) : ?>
+     <div class="alert alert-warning" role="alert">
+     <?= $_SESSION['message'];
+     unset($_SESSION['message']);?>
+   </div>
+   <?php endif ?>
+
 <article class="profile">
     <h1>Profile</h1>
 
@@ -39,6 +47,18 @@
 
         <button type="submit" class="btn btn-primary">Change</button>
     </form>
+
+    <!-- DELETE ACCOUNT -->
+    <form action="app/users/delete.php" method="POST">
+    <div>
+        <h2>Delete your account</h2>
+        <p>Please enter "DELETE" and press the button to confirm that you want to delete your account. All your lists and tasks will be permanently deleted.</p>
+    </div>
+        <label for="delete">Type DELETE here:</label>
+        <input type="text" name="delete" id="delete">
+        <button type="submit">Delete your account</button>
+    </form>
+
 </article>
 
 

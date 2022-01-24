@@ -21,6 +21,8 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     $insert->bindParam(':email', $email, PDO::PARAM_STR);
     $insert->bindParam(':password', $password, PDO::PARAM_STR);
     $insert->execute();
+
+    // SENDS WELCOME MESSAGE TO EMAIL
     sendMessage();
 
 }

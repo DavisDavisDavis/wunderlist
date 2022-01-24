@@ -2,6 +2,15 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 
 <article class="index">
+    <!-- After deleting -->
+    <?php if (isset($_SESSION['message'])) : ?>
+     <div class="alert alert-success" role="alert">
+     <?= $_SESSION['message'];
+     session_destroy();?>
+   </div>
+   <?php endif ?>
+    <!-- ----- -->
+
     <?php if (isset($_SESSION['email'])) : ?>
         <h1>💖 Welcome to wunderlist! 💖</h1>
         <p>You are logged in</p>
