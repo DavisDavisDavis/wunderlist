@@ -24,7 +24,6 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
 
     // SENDS WELCOME MESSAGE TO EMAIL
     sendMessage();
-
 }
 
 redirect('/login.php');

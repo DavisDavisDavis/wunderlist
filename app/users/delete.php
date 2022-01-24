@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
@@ -6,7 +7,6 @@ require __DIR__ . '/../autoload.php';
 if (isset($_POST['delete'])) {
     $inputDelete= filter_var($_POST['delete'], FILTER_SANITIZE_STRING);
     $email = $_SESSION['email'];
-
     if ($inputDelete === 'DELETE') {
 
         // Delete lists
@@ -26,9 +26,8 @@ if (isset($_POST['delete'])) {
 
         $_SESSION['message'] = 'Your account has been deleted.';
         redirect('/index.php');
-
     } else {
         $_SESSION['message'] = "Failed to type 'DELETE'. Your account was not removed.";
         redirect('/profile.php');
     }
- }
+}
