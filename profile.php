@@ -1,7 +1,13 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
+<?php
+// If not signed in, redirect to start-page
+if (!isset($_SESSION['email'])) {
+    redirect('/index.php');
+}
+?>
 
-<h1><?php var_dump($_SESSION['email'])?></h1>
+<!-- Message if removing account fails -->
  <?php if (isset($_SESSION['message'])) : ?>
      <div class="alert alert-warning" role="alert">
      <?= $_SESSION['message'];

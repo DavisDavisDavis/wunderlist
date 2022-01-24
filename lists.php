@@ -7,6 +7,11 @@ $pages = statement_fetchAll($database, 'pages');
 if (isset($_POST['select_display']) === false) {
     $_POST['select_display'] = 'none';
 }
+
+// If not signed in, redirect to start-page
+if (!isset($_SESSION['email'])) {
+    redirect('/index.php');
+}
 ?>
 
 
