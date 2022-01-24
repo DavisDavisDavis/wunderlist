@@ -20,10 +20,9 @@ if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
     $insert->bindParam(':name', $name, PDO::PARAM_STR);
     $insert->bindParam(':email', $email, PDO::PARAM_STR);
     $insert->bindParam(':password', $password, PDO::PARAM_STR);
-
     $insert->execute();
+    sendMessage();
 
-    //Resetting _POST
 }
 
 redirect('/login.php');
