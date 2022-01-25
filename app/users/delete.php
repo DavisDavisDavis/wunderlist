@@ -5,10 +5,9 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 if (isset($_POST['delete'])) {
-    $inputDelete= filter_var($_POST['delete'], FILTER_SANITIZE_STRING);
+    $inputDelete = filter_var($_POST['delete'], FILTER_SANITIZE_STRING);
     $email = $_SESSION['email'];
     if ($inputDelete === 'DELETE') {
-
         // Delete lists
         $statement = $database->prepare('DELETE from lists WHERE user_id = :user_id');
         $statement->bindParam(':user_id', $email, PDO::PARAM_STR);
