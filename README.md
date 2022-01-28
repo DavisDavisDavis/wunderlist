@@ -36,5 +36,5 @@ Fatal error: Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violat
 
 Tested by the following people:
 
-1. Jane Doe
+1. Anton Marinov
 2. John Doe
