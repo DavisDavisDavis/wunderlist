@@ -42,6 +42,6 @@ Tested by the following people:
 
 # Wunderlist +
 
-My pull request on two new featres for [Nellys](https://github.com/NellySP)
+My pull request for two new featres on [Nellys](https://github.com/NellySP)'s Wunderlist
 
 https://github.com/NellySP/Wunderlist/pull/1
