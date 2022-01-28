@@ -38,3 +38,9 @@ Tested by the following people:
 
 1. Anton Marinov
 2. John Doe
+
+
+# Wunderlist +
+
+My pull request on two new featres for [Nellys](https://github.com/NellySP)
+https://github.com/NellySP/Wunderlist/pull/1
