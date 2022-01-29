@@ -7,8 +7,8 @@ require __DIR__ . '/../autoload.php';
 // In this file we register a new user.
 
 if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
-    $name = trim($_POST['name']);
-    $email = trim($_POST['email']);
+    $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     $query =
