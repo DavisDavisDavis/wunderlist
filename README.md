@@ -36,5 +36,12 @@ Fatal error: Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violat
 
 Tested by the following people:
 
-1. Jane Doe
+1. Anton Marinov
 2. John Doe
+
+
+# Wunderlist +
+
+My pull request for two new featres on [Nelly's](https://github.com/NellySP) Wunderlist
+
+https://github.com/NellySP/Wunderlist/pull/1
