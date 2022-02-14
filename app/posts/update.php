@@ -8,7 +8,7 @@ require __DIR__ . '/../autoload.php';
 
 //I wonder if i can make this into a class somehow...
 if (isset($_POST['task_id'])) {
-    $query = 'UPDATE lists SET
+    $query = 'UPDATE tasks SET
         title = :title,
         description = :description,
         completed = :completed,

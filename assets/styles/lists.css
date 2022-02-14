@@ -1,4 +1,4 @@
-.lists {
+.tasks {
   width: 100%;
 
   display: flex;
@@ -7,12 +7,12 @@
   align-items: center;
 }
 
-.lists main div {
+.tasks main div {
   width: 50%;
   display: flex;
 }
 
-.lists form {
+.tasks form {
   background: pink;
 
   padding: 1rem;
@@ -24,11 +24,11 @@
   display: block;
 }
 
-.lists .hide {
+.tasks .hide {
   display: none;
 }
 
-.lists form div {
+.tasks form div {
   margin: 1rem;
 }
 

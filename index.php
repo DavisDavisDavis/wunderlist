@@ -1,13 +1,13 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
-
+<?php print_r($_SESSION['message']); ?>
 <article class="index">
     <!-- After deleting -->
     <?php if (isset($_SESSION['message'])) : ?>
-    <div class="alert alert-success" role="alert">
-        <?= $_SESSION['message'];
-        session_destroy();?>
-    </div>
+        <div class="alert alert-success" role="alert">
+            <?= $_SESSION['message'];
+            session_destroy(); ?>
+        </div>
     <?php endif ?>
     <!-- ----- -->
 

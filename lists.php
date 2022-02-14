@@ -1,8 +1,8 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 <?php
+$tasks = statement_fetchAll($database, 'tasks');
 $lists = statement_fetchAll($database, 'lists');
-$pages = statement_fetchAll($database, 'pages');
 
 if (isset($_POST['select_display']) === false) {
     $_POST['select_display'] = 'none';
@@ -15,7 +15,7 @@ if (!isset($_SESSION['email'])) {
 ?>
 
 
-<main class="lists">
+<main class="tasks">
     <h1>Task list</h1>
     <?= date_today(); ?>
 
@@ -27,11 +27,11 @@ if (!isset($_SESSION['email'])) {
     </ul>
 
     <form action="/app/posts/store.php" method="POST" class="tool_form_page">
-        <h2>Create a page 📀</h2>
+        <h2>Create a list 📀</h2>
 
         <div class="mb-3">
             <label for="title">title</label>
-            <input class="" type="" name="page_name" id="page_name" placeholder="title page" required>
+            <input class="" type="" name="list_name" id="list_name" placeholder="title list" required>
         </div>
 
         <div>
@@ -58,12 +58,12 @@ if (!isset($_SESSION['email'])) {
         </div>
 
         <div>
-            <label for="pages">Select page</label>
+            <label for="lists">Select page</label>
             <select class="" name="select_page">
-                <optgroup label="Pages">
-                    <?php foreach ($pages as $page) : ?>
-                        <?php if ($page['user_id'] == $_SESSION['email']) : ?>
-                            <option value="<?= $page['id']; ?>"><?= $page['page_title']; ?></option>
+                <optgroup label="lists">
+                    <?php foreach ($lists as $list) : ?>
+                        <?php if ($list['user_id'] == $_SESSION['email']) : ?>
+                            <option value="<?= $list['id']; ?>"><?= $list['list_title']; ?></option>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </optgroup>
@@ -99,10 +99,10 @@ if (!isset($_SESSION['email'])) {
         </div>
 
         <div>
-            <label for="pages">Select task</label>
+            <label for="lists">Select task</label>
             <select class="" name="task_id">
                 <optgroup label="Tasks">
-                    <?php foreach ($lists as $list) : ?>
+                    <?php foreach ($tasks as $list) : ?>
                         <?php if ($list['user_id'] == $_SESSION['email']) : ?>
                             <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
                         <?php endif; ?>
@@ -117,10 +117,10 @@ if (!isset($_SESSION['email'])) {
         <h2>Delete task 🔥</h2>
 
         <div>
-            <label for="pages">Select task</label>
+            <label for="lists">Select task</label>
             <select class="" name="delete_task">
                 <optgroup label="Tasks">
-                    <?php foreach ($lists as $list) : ?>
+                    <?php foreach ($tasks as $list) : ?>
                         <?php if ($list['user_id'] == $_SESSION['email']) : ?>
                             <option value="<?= $list['id']; ?>"><?= $list['title']; ?></option>
                         <?php endif; ?>
@@ -141,13 +141,13 @@ if (!isset($_SESSION['email'])) {
         <button type="submit">Select</button>
     </form>
 
-    <?php foreach ($pages as $page) : ?>
-        <?php if ($page['user_id'] == $_SESSION['email']) : ?>
-            <h2><?= $page['page_title'] ?></h2>
-            <?php foreach ($lists as $list) : ?>
+    <?php foreach ($lists as $list) : ?>
+        <?php if ($list['user_id'] == $_SESSION['email']) : ?>
+            <h2><?= $list['list_title'] ?></h2>
+            <?php foreach ($tasks as $task) : ?>
                 <div>
-                    <?php if ($list['lists_id'] == $page['id']) : ?>
-                        <?= display_task($list, $_POST['select_display']); ?>
+                    <?php if ($task['task_id'] == $list['id']) : ?>
+                        <?= display_task($task, $_POST['select_display']); ?>
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>

@@ -9,7 +9,7 @@ require __DIR__ . '/../autoload.php';
 if (isset($_POST['delete_task'])) {
     echo "isset 💖";
 
-    $query = 'DELETE FROM lists WHERE id = :id AND user_id = :user_id';
+    $query = 'DELETE FROM tasks WHERE id = :id AND user_id = :user_id';
     $statement = $database->prepare($query);
     $statement->bindParam(':id', $_POST['delete_task'], PDO::PARAM_INT);
     $statement->bindParam(':user_id', $_SESSION['email'], PDO::PARAM_STR);
