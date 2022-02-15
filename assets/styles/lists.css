@@ -13,15 +13,9 @@
 }
 
 .tasks form {
-  background: pink;
+  display: none;
 
-  padding: 1rem;
-  margin: 2rem;
-
-  border-radius: 0.5rem;
-  border: solid pink 2rem;
-
-  display: block;
+  transition: all, 0.5s;
 }
 
 .tasks .hide {
@@ -79,4 +73,18 @@
 
   border-radius: 0.5rem;
   border: solid pink 2rem;
+}
+
+.form-visable {
+  background: pink;
+
+  padding: 1rem;
+  margin: 2rem;
+
+  border-radius: 0.5rem;
+  border: solid pink 2rem;
+
+  display: block !important;
+
+  transition: all, 0.5s;
 }

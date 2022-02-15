@@ -20,13 +20,13 @@ if (!isset($_SESSION['email'])) {
     <?= date_today(); ?>
 
     <ul id="button_list" class="button_list">
-        <button class="tool_button_create">Create Task ⭐️</button>
-        <button class="tool_button_page">Create Page 📀</button>
-        <button class="tool_button_update">Update Task ✨</button>
-        <button class="tool_button_delete">Delete Task 🔥</button>
+        <button>Create Task ⭐️</button>
+        <button>Create Page 📀</button>
+        <button>Update Task ✨</button>
+        <button>Delete Task 🔥</button>
     </ul>
 
-    <form action="/app/posts/store.php" method="POST" class="tool_form_page">
+    <form action="/app/posts/store.php" method="POST">
         <h2>Create a list 📀</h2>
 
         <div class="mb-3">
@@ -39,7 +39,7 @@ if (!isset($_SESSION['email'])) {
         </div>
     </form>
 
-    <form action="/app/posts/store.php" method="post" class="tool_form_create">
+    <form action="/app/posts/store.php" method="post">
         <h2>Create task 💖</h2>
 
         <div class="mb-3">
@@ -75,7 +75,7 @@ if (!isset($_SESSION['email'])) {
         </div>
     </form>
 
-    <form action="/app/posts/update.php" method="POST" class="tool_form_update">
+    <form action="/app/posts/update.php" method="POST">
         <h2>Update 🐱</h2>
 
         <div class="mb-3">
@@ -113,7 +113,7 @@ if (!isset($_SESSION['email'])) {
         </div>
     </form>
 
-    <form action="/app/posts/delete.php" method="POST" class="tool_form_delete">
+    <form action="/app/posts/delete.php" method="POST">
         <h2>Delete task 🔥</h2>
 
         <div>
